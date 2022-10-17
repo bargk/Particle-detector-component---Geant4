@@ -1,0 +1,8 @@
+/gun/particle ion
+/gun/ion 55 137 #Z , A
+
+
+/run/beamOn 1000
+/run/beamOn 10000
+/run/beamOn 100000
+/run/beamOn 1000000
