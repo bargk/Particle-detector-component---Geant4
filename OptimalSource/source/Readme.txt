@@ -25,10 +25,10 @@ This program demonstrates a very simple application where an cherenkov
    
  The quartz fiber dimensions is 7 cm for height and a radius of 0.075 cm.
  The PMT has radius of 4 mm with negligible thickness and it is sensitive to photons with energy
- of 1 to 5 eV.
- The radioactive source is presented as a pointwise source in this simulation
- parallel to the fiber's axis of symmetry at a distance of 1 cm from it's
- center of mass. The PMT is placed 0.5 cm from the top of the fiber.
+ of 1 to 4.5 eV.
+ The radioactive source has a dimensions of 2*2 cm^2, placed
+ parallel to the fiber's axis of symmetry at a distance of 2 cm from it's
+ center of mass. The PMT is placed 1.5 cm from the top of the fiber.
  
  //PMT
  
