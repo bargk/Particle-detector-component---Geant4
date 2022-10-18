@@ -39,10 +39,17 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event* anEvent) //this function cre
 
 
     }
+    //define uniform distribution over a box of width and lengh of "envsize" cm
+   // This is to take into account the dimensions of the source
+    G4double envsize = 2;
+    G4double x0 = 2 * cm;
+    G4double y0 = (envsize * (G4UniformRand() - 0.5)) * cm;
+    G4double z0 = (envsize * (G4UniformRand() - 0.5)) * cm;
 
-   
 
-   fParticleGun->SetParticlePosition(G4ThreeVector(1*cm, 0, 0));
+
+
+   fParticleGun->SetParticlePosition(G4ThreeVector(x0, y0, z0));
    G4ThreeVector momentumUnitVector = G4RandomDirection(); //random vector of mangnitude unity
    fParticleGun->SetParticleMomentumDirection(momentumUnitVector);
    fParticleGun->GeneratePrimaryVertex(anEvent);

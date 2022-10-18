@@ -27,31 +27,14 @@ G4VPhysicalVolume* MyDetectorConstruction::Construct()
 	SiO2->AddElement(nist->FindOrBuildElement("Si"), 1);
 	SiO2->AddElement(nist->FindOrBuildElement("O"), 2);
 
-	G4int num = 39;
-	G4double energy[num] = {
-	 1.9 * eV, 2.0 * eV, 2.017 * eV,
-	2.034 * eV, 2.068 * eV, 2.103 * eV, 2.139 * eV, 2.177 * eV, 2.216 * eV,  // Cherenkov photons will create only in
-	2.256 * eV, 2.298 * eV, 2.341 * eV, 2.386 * eV, 2.433 * eV, 2.481 * eV,  // that energy range. 
-	2.532 * eV, 2.585 * eV, 2.640 * eV, 2.697 * eV, 2.757 * eV, 2.820 * eV,
-	2.885 * eV, 2.954 * eV, 3.026 * eV, 3.102 * eV, 3.181 * eV, 3.265 * eV,
-	3.353 * eV, 3.446 * eV, 3.545 * eV, 3.649 * eV, 3.760 * eV, 3.877 * eV,
-	4.002 * eV, 4.136 * eV , 4.236 * eV,4.500 * eV, 4.702 * eV, 4.900 * eV
-	};
-	G4double rindexSiO2[num] = {
-	1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5, 1.5,
-	};
-	G4double rindexAir[num] = {
-	1.0,1.0, 1.0, 1.0,  1.0, 1.0,1.0,
-	1.0, 1.0,1.0, 1.0,  1.0, 1.0,1.0, 1.0,
-	1.0, 1.0,1.0, 1.0,  1.0, 1.0,1.0, 1.0,
-	1.0, 1.0,1.0, 1.0,  1.0, 1.0,1.0, 1.0,
-	1.0, 1.0,1.0, 1.0,  1.0, 1.0,1.0, 1.0,
-	};
+	G4int num = 8;
 
+	G4double energy[num] = { 1.23984198 * eV / 0.65, 1.23984198 * eV / 0.6, 1.23984198 * eV / 0.55, 1.23984198 * eV / 0.5,
+							1.23984198 * eV / 0.45, 1.23984198 * eV / 0.4, 1.23984198 * eV / 0.35, 1.23984198 * eV / 0.3 };
+
+	G4double rindexSiO2[num] = {1.5, 1.5, 1.5, 1.5,  1.5, 1.5, 1.5, 1.5 };
+	G4double rindexAir[num] = {1.0,1.0, 1.0, 1.0,  1.0, 1.0,1.0, 1.0 };
+	G4double rindexSteel[num] = { 2.0, 1.8, 1.7, 1.5, 1.4, 1.3, 1.25, 1.2 };
 
 	G4MaterialPropertiesTable* mptSiO2 = new G4MaterialPropertiesTable();
 	mptSiO2->AddProperty("RINDEX", energy, rindexSiO2, num);
@@ -87,7 +70,6 @@ G4VPhysicalVolume* MyDetectorConstruction::Construct()
 	G4double startAngle2 = 0. * deg;
 	G4double spanningAngle2 = 360. * deg;
 	G4Tubs* solidRadiator = new G4Tubs("solidRadiator", innerRadius2, outerRadius2, hz2, startAngle2, spanningAngle2);
-	//G4Box* solidRadiator = new G4Box("solidRadiator", 1 * cm, 1 * cm, 30 * cm);
 	G4LogicalVolume* logicalRadiator = new G4LogicalVolume(solidRadiator, SiO2, "logicalRadiator");
 	G4VPhysicalVolume* physRadiator = new G4PVPlacement(0, G4ThreeVector(0., 0., 0 ), logicalRadiator , "physWorld", worldLog, false, 0, true);
 
@@ -117,11 +99,11 @@ void MyDetectorConstruction::ConstructSDandField()
 {
 	//Here we make our "solid detector" to be sensitive and apply some filters to it
 
-	  //accept only photons in range 1-5 eV
+	  //accept only photons in range 1-4.5 eV
 	G4SDParticleWithEnergyFilter* filter = new G4SDParticleWithEnergyFilter("photons filter");
 
 	filter->add("opticalphoton");
-	filter->SetKineticEnergy(1 * eV, 5 * eV); // (Emin,Emax)
+	filter->SetKineticEnergy(1 * eV, 4.5 * eV); // (Emin,Emax)
 
 
 	MySensitiveDetector* sensDet = new MySensitiveDetector("SensitiveDetector"); //creating object of MysensitiveDetector class
