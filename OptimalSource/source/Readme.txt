@@ -12,7 +12,7 @@ This program demonstrates a very simple application where an cherenkov
  
  Each macro performs 4 runs, each of 10^3, 10^4, 10^5, 10^6 decays respectively.
  Each macro creates 4 roots files named "output_(#run number)" which shows the cherenkov energy distribution 
- as a function of energy, (output_0.root is for the first run,
+ got into the PMT, (output_0.root is for the first run,
  output_1.root is for the second and so on..). This means that if the user want to 
  save the root files, he has to change their names before running the other macros,
  otherwise the files will be overwritten.
