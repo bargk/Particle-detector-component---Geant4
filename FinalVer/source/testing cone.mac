@@ -1,0 +1,86 @@
+/detector/Cone false
+/detector/PMT 5
+/run/reinitializeGeometry 
+/run/beamOn 1
+
+/filename/name "without_cone 5cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 6
+/run/reinitializeGeometry 
+
+
+/filename/name "without_cone 6cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 7
+/run/reinitializeGeometry 
+
+
+/filename/name "without_cone 7cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 8
+/run/reinitializeGeometry 
+
+
+/filename/name "without_cone 8cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 9
+/run/reinitializeGeometry 
+
+
+/filename/name "without_cone 9cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 10
+/run/reinitializeGeometry 
+
+
+/filename/name "without_cone 10cm"
+/run/beamOn 100000
+
+#############WITH CONE###########
+/detector/Cone true
+/detector/PMT 5
+/run/reinitializeGeometry 
+
+
+/filename/name "with_cone 5cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 6
+/run/reinitializeGeometry 
+
+
+/filename/name "with_cone 6cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 7
+/run/reinitializeGeometry 
+
+
+/filename/name "with_cone 7cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 8
+/run/reinitializeGeometry 
+
+
+/filename/name "with_cone 8cm"
+/run/beamOn 100000
+#################################
+/detector/PMT 9
+/run/reinitializeGeometry 
+
+
+/filename/name "with_cone 9cm"
+/run/beamOn 100000
+#################################
+##/detector/PMT 10
+##/run/reinitializeGeometry 
+
+
+##/filename/name "with_cone 10cm"
+##/run/beamOn 100000
